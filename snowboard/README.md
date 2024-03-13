@@ -8,7 +8,7 @@ Myöhemmin saatan lisätä vielä jotain.
 Lisäkikkailuna halusin tehdä vempeleen, jolla voi koittaa eri värejä. Kokeilin venyttää
 copilotin rajoja. Alkuperäinen prompti oli:
 
-...
+```
 Create python based GUI that can be used to select new colors to image. 
 
 As a first stage, code reads image from file using "load button".
@@ -23,8 +23,7 @@ described in https://www.rapidtables.com/web/color/RGB_Color.html in section "RG
 The actual color is presented in GUI. 
 
 User may save the image with modified colors. 
-...
-
+```
 Ihan putkeen ei mennyt copilotin koodi. Ja jouduin kyselemään virheistä. Se ei esimerkiksi ottanut
 huomioon, että värikanavia voi olla 3 tai 4. Värin valintakaan ei toiminut. Lisäksi mm. mustan värin
 muuttaminen saattoi muuttaa alkuun valkoista väriä. Tässä vaiheessa luovutin ChatGPT:n kanssa, koska
@@ -33,8 +32,14 @@ ns. tiesin vastauksen itse helpommin, koska olen jonkin verran Tkinterin kanssa 
 Nykyinen versio koodista (recolor.py) on ohessa. Koodi siis lataa kuvan ja klusteroi KMeans-algoritmilla 
 (näemmmä) sen 3:ksi väriksi. Koodin saa helposti toimimaan myös 4:llä värillä (tms) muuttamalla riviä 55:
 
-...
+```
 kmeans = KMeans(n_clusters=4)
-...
-
+```
 ![Koodi ajossa](kuvia/app-in-action.png)
+
+## Python-detaljit
+Koodi perustuu muutenkin käyttämiini Python-kirjastoihin. Tällä rimpsulla luulisi pääsevän liikkeelle (voi olla, että tkinter pitää myös asentaa):
+
+```
+pip install pillow numpy scikit-learn
+```
