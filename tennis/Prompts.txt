@@ -1,0 +1,35 @@
+I would like to create database for my rackets.
+
+There is csv file in the FischerList folder. Each line corresponds to a single racket. 
+Convert this to Microsoft SQL database. Each racket may contain several images. 
+In the example there is link to one image, that are found in the Fischerlist folder. 
+
+I am now connected Azure subscription to VS Code. 
+Now I want to create database that has structure of the csvfile FischerList/FischerList_Cleaned.csv
+
+I do not have the database, How to create it?
+
+Now I have created fischertennis database successfully.
+
+Each racket may contain several images. In the example 
+there is link to one image, that are found in the Fischerlist folder.
+
+I need to change the OwnedByTommi from VARCHAR(255) to integer in database
+
+I want to to create web page that displays a slidehow. 
+Slideshow images are read from the files as in test_db2.py. 
+Use only images that has OwnedByTommi >= 0. 
+
+Rackets in the database use \ instead of / in the directory listing (ImagePath). I want to replace all \ to /.
+
+My code /home/tmatila/anaconda3/envs/cv2/bin/python/home/tmatila/repos/ai_academy/Tennis/run_html.py 
+runs okay, but the web page cannot find my images for display.
+
+The code works with modifications. Now I want to modify it so that there is three html-pages. One "Tommi's rackets" shows Rackets WHERE OwnedByTommi > 0, second "Desired by Tommi" Rackets WHERE TommiWantsThis = '1', third page "Whole database" all Rackets. The selection between is done using buttons in the top of the web page. 
+
+Make the background grey with some texture. Also make the buttons wide, so that they cover the whole screen width. 
+
+
+
+
+
