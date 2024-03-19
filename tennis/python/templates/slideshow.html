@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{ title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color:bisque
+            /* Other styles */
+        }
+
+        .header {
+            text-align: center;
+            font-size: 28px;
+            margin: 20px 0;
+        }
+        .nav {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        .nav a {
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 18px;
+            color: #007bff;
+        }
+        .slideshow-container {
+            max-width: 100%;
+            position: relative;
+            margin: auto;
+        }
+        .mySlides {
+            display: none;
+            text-align: center;
+        }
+        img {
+            max-width: 100%;
+            max-height: 80vh; /* Adjust based on your needs */
+            margin: auto;
+        }
+        /* Your existing styles here */
+        .button-container {
+            text-align: center;
+            margin-top: 20px;
+        }
+        .button {
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            outline: none;
+            color: white;
+            background-color: #007bff;
+            border: none;
+            border-radius: 5px;
+            margin: 5px;
+        }
+        .button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+<!-- Navigation links and header -->
+<div class="nav">
+    <a href="/">Whole Database</a>
+    <a href="/owned_by_tommi">Tommi's Racket Collection</a>
+    <a href="/tommi_wants">Tommi's Shopping List</a>
+</div>
+
+<div class="header">{{ title }}</div>
+
+<div class="slideshow-container">
+    {% for racket in rackets %}
+    <div class="mySlides">
+        <h3>{{ racket.Manufacturer }} {{ racket.Name }} from year {{ racket.Year }}</h3>
+        <img src="{{ url_for('static', filename=racket.Image) if racket.Image else 'default_image.jpg' }}" alt="Racket image">
+        <p>{{ racket.DescriptionTommi }}</p>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="button-container">
+    <button class="button" onclick="plusSlides(-1)">Prev</button>
+    <button class="button" onclick="plusSlides(1)">Next</button>
+    <button class="button" id="playButton" onclick="togglePlayPause()">Play</button>
+</div>
+
+<script>
+let slideIndex = 0;
+let playing = false;
+let slides = document.getElementsByClassName("mySlides");
+let playButton = document.getElementById("playButton");
+
+function plusSlides(n) {
+    showSlides(slideIndex += n);
+}
+
+function currentSlide(n) {
+    showSlides(slideIndex = n);
+}
+
+function showSlides(n) {
+    let i;
+    if (n > slides.length) {slideIndex = 1}
+    if (n < 1) {slideIndex = slides.length}
+    for (i = 0; i < slides.length; i++) {
+        slides[i].style.display = "none";
+    }
+    slides[slideIndex-1].style.display = "block";
+}
+
+function togglePlayPause() {
+    if (playing) {
+        playButton.innerHTML = 'Play';
+        stopSlideshow();
+    } else {
+        playButton.innerHTML = 'Pause';
+        startSlideshow();
+    }
+    playing = !playing;
+}
+
+function startSlideshow() {
+    showSlides(slideIndex);
+    slideIndex++;
+    setTimeout(function() {
+        if (playing) startSlideshow();
+    }, 3000); // Change image every 3 seconds
+}
+
+function stopSlideshow() {
+    playing = false;
+}
+
+// Initialize the slideshow
+showSlides(slideIndex = 1);
+</script>
+
+</body>
+</html>
+
+
+
