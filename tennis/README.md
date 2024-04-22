@@ -28,7 +28,13 @@ sudo ACCEPT_EULA=Y apt-get install msodbcsql17
 
 odbcinst -q -d -n "ODBC Driver 17 for SQL Server"
 
-Jos tämän ajo onnistuu ilman virheitä on jo aika pitkällä:
+## Tietokannan luominen
+1) Luodaan taulu python/create_table.py
+2) Täytetään taulua csv-datalla python/populate_table.py
+3) Korjataan kuviin "not found" linkit python/fix_table.py
+
+
+Luomisen jälkeen (1) jos tämän ajo onnistuu ilman virheitä on jo aika pitkällä:
 
 /bin/python3 /home/ai2024lectures/repos/ai_academy_demo/tennis/python/test_dB.py
 
