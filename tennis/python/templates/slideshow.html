@@ -6,7 +6,7 @@
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color:bisque
+            background-color:lightskyblue
             /* Other styles */
         }
 
@@ -36,7 +36,7 @@
         }
         img {
             max-width: 100%;
-            max-height: 80vh; /* Adjust based on your needs */
+            max-height: 60vh; /* Adjust based on your needs */
             margin: auto;
         }
         /* Your existing styles here */
@@ -127,7 +127,7 @@ function startSlideshow() {
     slideIndex++;
     setTimeout(function() {
         if (playing) startSlideshow();
-    }, 3000); // Change image every 3 seconds
+    }, 1000); // Change image every 3 seconds
 }
 
 function stopSlideshow() {
