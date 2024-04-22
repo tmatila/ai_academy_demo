@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>{{ title }}</title>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <h1>{{ title }}</h1>
+
+    <form method="POST">
+        <input type="radio" id="all" name="data_selection" value="all" checked>
+        <label for="all">All</label><br>
+        <input type="radio" id="owned" name="data_selection" value="owned">
+        <label for="owned">Tommi's rackets</label><br>
+        <input type="radio" id="wants" name="data_selection" value="wants">
+        <label for="wants">Shopping list</label><br>
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="histogram"></div>
+
+    <script>
+        var data = [{
+            x: {{ years|tojson }},
+            type: 'histogram',
+            histnorm: '',
+            xbins: {
+                size: 1
+            }
+        }];
+
+        var layout = {
+            xaxis: {title: 'Year', range: [1980, 2024]},
+            yaxis: {title: 'Number of Rackets'},
+            title: 'Number of Rackets per Year'
+        };
+
+        Plotly.newPlot('histogram', data, layout);
+    </script>
+    <!-- <script>
+        var data = [{
+            x: {{ years|tojson }},
+            type: 'histogram'
+        }];
+
+        Plotly.newPlot('histogram', data);
+    </script> -->
+</body>
+</html>

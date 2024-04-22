@@ -14,6 +14,8 @@
 
 from flask import Flask, render_template
 from flask_sqlalchemy import SQLAlchemy
+from flask import request
+
 import os
 
 app = Flask(__name__)
@@ -51,6 +53,20 @@ def owned_by_tommi():
 def tommi_wants():
     rackets = TennisRackets.query.filter(TennisRackets.Tommi_wants_this > 0).all()
     return render_template('slideshow.html', rackets=rackets, title="Tommi's Shopping List")
+
+@app.route('/analysis', methods=['GET', 'POST'])
+def analysis():
+    selection = request.form.get('data_selection', 'all')
+
+    if selection == 'all':
+        rackets = TennisRackets.query.all()
+    elif selection == 'owned':
+        rackets = TennisRackets.query.filter(TennisRackets.Owned_by_Tommi > 0).all()
+    elif selection == 'wants':
+        rackets = TennisRackets.query.filter(TennisRackets.Tommi_wants_this > 0).all()
+
+    years = [racket.Year for racket in rackets]
+    return render_template('analysis.html', years=years, title="Analysis Page")
 
 if __name__ == '__main__':
     app.run(debug=True)
