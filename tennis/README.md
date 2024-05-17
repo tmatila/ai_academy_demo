@@ -53,6 +53,9 @@ Ja tarvittaessa uudelleenkäynnistää
 sudo docker start sql-edge
 
 
+## Lisäominaisuudet
+Alasivulla analysis on histogrammit, joista selviää mitkä vuodet on yliedustettuina tietokannassa. 
+Lisäksi siitä selvinnee, mikä aikakausi kiinnostaa mailafetissiä. 
 
 
 
